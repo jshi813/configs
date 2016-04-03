@@ -2,3 +2,9 @@ vundle
 pathogen
 nerdtree // WOW
 fuzzyfinder
+
+# Sublime packages
+package control
+gitgutter
+linejumper
+sublimegit

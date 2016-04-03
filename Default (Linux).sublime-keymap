@@ -1,0 +1,8 @@
+[
+  { "keys": ["super+alt+down"], "command": "goto_definition" },
+  { "keys": ["home"], "command": "move_to", "args": {"to": "bol"} },
+  { "keys": ["end"], "command": "move_to", "args": {"to": "eol"} },
+  { "keys": ["ctrl+."], "command": "reveal_in_side_bar" },
+  { "keys": ["super+shift+r"], "command": "goto_symbol_in_project" },
+  { "keys": ["ctrl+i"], "command": "reindent" },
+]

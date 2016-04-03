@@ -1,0 +1,42 @@
+{
+	"color_scheme": "Packages/Color Scheme - Default/Monokai.tmTheme",
+	"ensure_newline_at_eof_on_save": true,
+	"folder_exclude_patterns":
+	[
+		".arcconfig",
+		".buildgen",
+		".bundle",
+		".fortune",
+		".fsconfig.json",
+		".fsenv",
+		".git",
+		".gitignore",
+		".gitshed",
+		".local_artifact_cache",
+		".pants.bootstrap",
+		".pants.d",
+		".pantsenv",
+		".pex",
+		".pvenvs",
+		".svn",
+		".wheelhouse",
+		"build",
+		"generated_resources",
+		"scripts/IntelliJ",
+		"target"
+	],
+	"font_size": 10,
+	"ignored_packages":
+	[
+		"Vintage"
+	],
+	"rulers":
+	[
+		120
+	],
+	"scroll_past_end": true,
+	"tab_completion": false,
+	"tab_size": 2,
+	"translate_tabs_to_spaces": true,
+	"trim_trailing_white_space_on_save": true
+}
