@@ -9,6 +9,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'solarnz/thrift.vim'
+Plugin 'scrooloose/syntastic'
 " Display options
 syntax on
 set cursorline
