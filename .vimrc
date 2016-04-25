@@ -195,7 +195,7 @@ let g:UltiSnipsListSnippets = '<c-h>'
 
 nnoremap <silent> <Leader>gd :Gdiff<CR>
 nnoremap <silent> <Leader>gb :Gblame<CR>
-nnoremap <silent> <Leader>gg :Ggrep
+nnoremap <Leader>gg :Ggrep 
 
 nnoremap <Leader>a :Ack
 
