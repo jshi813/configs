@@ -8,6 +8,7 @@ set nocompatible              " be iMproved, required
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
+Plugin 'groenewege/vim-less'
 Plugin 'solarnz/thrift.vim'
 Plugin 'scrooloose/syntastic'
 " Display options
@@ -22,7 +23,8 @@ if $TERM =~ '256color'
 elseif $TERM =~ '^xterm$'
   set t_Co=256
 endif
-
+syntax enable
+colorscheme monokai
 " Misc
 filetype plugin indent on       " Do filetype detection and load custom file plugins and indent files
 set hidden                      " Don't abandon buffers moved to the background
@@ -194,7 +196,7 @@ let g:UltiSnipsListSnippets = '<c-h>'
 nnoremap <silent> <Leader>gd :Gdiff<CR>
 nnoremap <silent> <Leader>gb :Gblame<CR>
 
-nnoremap <Leader>a :Ack 
+nnoremap <Leader>a :Ack
 
 " Put a space around comment markers
 let g:NERDSpaceDelims = 1
