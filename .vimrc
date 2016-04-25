@@ -174,9 +174,9 @@ cmap w!! w !sudo tee % >/dev/null
 """""""""""""""""""""""""
 " Plugins
 """""""""""""""""""""""""
-nnoremap <Leader>b :BufSurfBack<cr>
-nnoremap <Leader>f :BufSurfForward<cr>
-
+"nnoremap <Leader>b :BufSurfBack<cr>
+"nnoremap <Leader>f :BufSurfForward<cr>
+nnoremap <Leader>b :CtrlPBuffer<cr>
 nnoremap <C-u> :GundoToggle<CR>
 
 " TODO Merge the NERDTreeFind with Toggle inteilligently.
@@ -195,6 +195,7 @@ let g:UltiSnipsListSnippets = '<c-h>'
 
 nnoremap <silent> <Leader>gd :Gdiff<CR>
 nnoremap <silent> <Leader>gb :Gblame<CR>
+nnoremap <silent> <Leader>gg :Ggrep
 
 nnoremap <Leader>a :Ack
 
@@ -298,6 +299,14 @@ if has("cscope")
   " Show msg when any other cscope db is added
   set cscopeverbose
 end
+
+"""""""""""""""""""""""""
+" Spell checking
+"""""""""""""""""""""""""
+set spell
+set spell spelllang=en_us
+highlight clear SpellBad
+highlight SpellBad term=standout ctermfg=1 term=underline cterm=underline
 
 """""""""""""""""""""""""
 " Local config
