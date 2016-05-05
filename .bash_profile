@@ -12,5 +12,4 @@ alias l="ls -l"
 alias web="./fs web --flc-debug --flc=pants"
 alias cor="cordova run browser"
 alias web1="./fs web --flc-debug --flc=pants --extra=-Drelease.datetime=`date +%s`"
-export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Versions/1.6/Home
 alias f="find . -name"
