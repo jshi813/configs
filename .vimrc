@@ -1,116 +1,71 @@
-"""""""""""""""""""""""""
-" Basic features
-"""""""""""""""""""""""""
-call pathogen#infect()
+" vundle
 set nocompatible              " be iMproved, required
+filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
+" " alternatively, pass a path where Vundle should install plugins
+" "call vundle#begin('~/some/path/here')
+"
+" " let Vundle manage Vundle, required
+Plugin 'Valloric/YouCompleteMe'
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'groenewege/vim-less'
-Plugin 'solarnz/thrift.vim'
-Plugin 'scrooloose/syntastic'
-" Display options
-syntax on
-set cursorline
-set number
-set encoding=utf-8
-set list!                       " Display unprintable characters
-set listchars=tab:▸\ ,trail:•,extends:»,precedes:«
-if $TERM =~ '256color'
-  set t_Co=256
-elseif $TERM =~ '^xterm$'
-  set t_Co=256
-endif
-syntax enable
-colorscheme monokai
-" Misc
-filetype plugin indent on       " Do filetype detection and load custom file plugins and indent files
-set hidden                      " Don't abandon buffers moved to the background
-set wildmenu                    " Enhanced completion hints in command line
-set wildmode=list:longest,full  " Complete longest common match and show possible matches and wildmenu
-set backspace=eol,start,indent  " Allow backspacing over indent, eol, & start
-set complete=.,w,b,u,U,t,i,d    " Do lots of scanning on tab completion
-set updatecount=100             " Write swap file to disk every 100 chars
-set directory=~/.vim/swap       " Directory to use for the swap file
-set diffopt=filler,iwhite       " In diff mode, ignore whitespace changes and align unchanged lines
-set history=1000                " Remember 1000 commands
-set scrolloff=3                 " Start scrolling 3 lines before the horizontal window border
-set autochdir                   " Automatically cd into dir that the file is in
-set visualbell t_vb=            " Disable error bells
-set shortmess+=A                " Always edit file, even when swap file is found
-set ttimeoutlen=50
+"
+" " The following are examples of different formats supported.
+" " Keep Plugin commands between vundle#begin/end.
+" " plugin on GitHub repo
+" Plugin 'tpope/vim-fugitive'
+" " plugin from http://vim-scripts.org/vim/scripts.html
+" " Plugin 'L9'
+" " Git plugin not hosted on GitHub
+" Plugin 'git://git.wincent.com/command-t.git'
+" " git repos on your local machine (i.e. when working on your own plugin)
+" Plugin 'file:///home/gmarik/path/to/plugin'
+" " The sparkup vim script is in a subdirectory of this repo called vim.
+" " Pass the path to set the runtimepath properly.
+" Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+" " Install L9 and avoid a Naming conflict if you've already installed a
+" " different version somewhere else.
+" " Plugin 'ascenator/L9', {'name': 'newL9'}
+"
+" " All of your Plugins must be added before the following line
+call vundle#end()            " required
 
-" up/down on displayed lines, not real lines. More useful than painful.
+execute pathogen#infect()
+syntax on
+filetype plugin indent on
+set number
+set cursorline
+syntax enable
+
 noremap k gk
 noremap j gj
 
-" Formatting, indentation and tabbing
 set autoindent smartindent
-set smarttab                    " Make <tab> and <backspace> smarter
+set smarttab
 set expandtab
-set tabstop=2
-set shiftwidth=2
-set textwidth=80
-set formatoptions-=t formatoptions+=croql
+set tabstop=4
+set shiftwidth=4
+set encoding=utf-8
+set backspace=2
 
-" viminfo: remember certain things when we exit
-" (http://vimdoc.sourceforge.net/htmldoc/usr_21.html)
-"   %    : saves and restores the buffer list
-"   '100 : marks will be remembered for up to 30 previously edited files
-"   /100 : save 100 lines from search history
-"   h    : disable hlsearch on start
-"   "500 : save up to 500 lines for each register
-"   :1000 : up to 1000 lines of command-line history will be remembered
-"   n... : where to save the viminfo files
-set viminfo=%100,'100,/100,h,\"500,:1000,n~/.vim/viminfo
-
-" ctags: recurse up to home to find tags. See
-" http://stackoverflow.com/questions/563616/vim-and-ctags-tips-and-tricks
-" for an explanation and other ctags tips/tricks
-set tags+=tags;$HOME
-
-" Undo
-set undolevels=10000
-if has("persistent_undo")
-  set undodir=~/.vim/undo       " Allow undoes to persist even after a file is closed
-  set undofile
-endif
-
-" Search settings
+" search
 set ignorecase
 set smartcase
 set hlsearch
 set incsearch
 set showmatch
 
-" to_html settings
-let html_number_lines = 1
-let html_ignore_folding = 1
-let html_use_css = 1
-let xml_use_xhtml = 1
+set runtimepath^=~/.vim/bundle/ctrlp.vim
 
-" Save/restore view on close/open (folds, cursor, etc.)
-au BufWinLeave * silent! mkview
-au BufWinEnter * silent! loadview
-
-au BufWinEnter * checktime
-au WinEnter * checktime
-" After 1s of inactivity, check for external file modifications on next keypress
-au CursorHold * checktime
-set updatetime=1000
+colorscheme monokai
 
 """""""""""""""""""""""""
 " Keybindings
 """""""""""""""""""""""""
 let mapleader=","
 let localmapleader=","
-
-nmap <Leader>s :%s/
-vmap <Leader>s :s/
-nmap <Leader>S :%S/
-vmap <Leader>S :S/
 
 vnoremap . :normal .<CR>
 vnoremap @ :normal! @
@@ -139,7 +94,6 @@ let g:EclimCompletionMethod = 'omnifunc'
 function! YRRunAfterMaps()
   nnoremap <silent> Y :<C-U>YRYankCount 'y$'<CR>
 endfunction
-
 " Disable K for manpages - not used often and easy to accidentally hit
 noremap K k
 
@@ -150,7 +104,6 @@ noremap <C-h> <C-w>h
 noremap <C-l> <C-w>l
 
 " Resize window splits
-" TODO Fix mousewheel
 nnoremap <Up>    3<C-w>-
 nnoremap <Down>  3<C-w>+
 nnoremap <Left>  3<C-w><
@@ -170,12 +123,6 @@ noremap <S-k> gJ
 
 " Write file when you forget to use sudo
 cmap w!! w !sudo tee % >/dev/null
-
-"""""""""""""""""""""""""
-" Plugins
-"""""""""""""""""""""""""
-"nnoremap <Leader>b :BufSurfBack<cr>
-"nnoremap <Leader>f :BufSurfForward<cr>
 nnoremap <Leader>b :CtrlPBuffer<cr>
 nnoremap <C-u> :GundoToggle<CR>
 
@@ -195,7 +142,7 @@ let g:UltiSnipsListSnippets = '<c-h>'
 
 nnoremap <silent> <Leader>gd :Gdiff<CR>
 nnoremap <silent> <Leader>gb :Gblame<CR>
-nnoremap <Leader>gg :Ggrep 
+nnoremap <Leader>gg :Ggrep
 
 nnoremap <Leader>a :Ack
 
@@ -270,47 +217,10 @@ augroup rainbow
   autocmd BufNewFile,BufReadPost,FilterReadPost,FileReadPost,Syntax * nested call s:load()
 augroup END
 
-"""""""""""""""""""""""""
-" Ruby Stuff
-"""""""""""""""""""""""""
-command -nargs=? -complete=shellcmd W  :w | :call ScreenShellSend("load '".@%."';")
-map <Leader>r :w<CR> :call ScreenShellSend("rspec ".@% . ':' . line('.'))<CR>
-map <Leader>e :w<CR> :call ScreenShellSend("cucumber --format=pretty ".@% . ':' . line('.'))<CR>
-map <Leader>w :w<CR> :call ScreenShellSend("break ".@% . ':' . line('.'))<CR>
-map <Leader>m :w<CR> :call ScreenShellSend("\e[A")<CR>
-" map <Leader>r :w<CR> :call ScreenShellSend(":load ".@%)<CR>
+" quiting and saving
+nmap <Leader>w :w<CR>
+nmap <Leader>q :q!<CR>
 
-"""""""""""""""""""""""""
-" Cscope
-"""""""""""""""""""""""""
-if has("cscope")
-  " Use both cscope and ctag for 'ctrl-]', ':ta', and 'vim -t'
-  set cscopetag
-
-  " Check ctags before checking scope. Set to 1 if you want the reverse search
-  " order.
-  set csto=1
-
-  " Add any cscope database in current directory
-  if filereadable("cscope.out")
-    cs add cscope.out
-  endif
-
-  " Show msg when any other cscope db is added
-  set cscopeverbose
-end
-
-"""""""""""""""""""""""""
-" Spell checking
-"""""""""""""""""""""""""
-set spell
-set spell spelllang=en_us
-highlight clear SpellBad
-highlight SpellBad term=standout ctermfg=1 term=underline cterm=underline
-
-"""""""""""""""""""""""""
-" Local config
-"""""""""""""""""""""""""
-so ~/.vim/vimrc.mine
-:command NT NERDTree
-call vundle#end()
+" eclim
+nmap <Leader>s :JavaSearch 
+nmap <Leader>ji : JavaImport<CR>
