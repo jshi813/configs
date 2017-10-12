@@ -9,8 +9,8 @@ call vundle#begin()
 " "call vundle#begin('~/some/path/here')
 "
 " " let Vundle manage Vundle, required
-Plugin 'Valloric/YouCompleteMe'
 Plugin 'VundleVim/Vundle.vim'
+Plugin 'scrooloose/nerdcommenter'
 "
 " " The following are examples of different formats supported.
 " " Keep Plugin commands between vundle#begin/end.
@@ -35,7 +35,7 @@ call vundle#end()            " required
 execute pathogen#infect()
 syntax on
 filetype plugin indent on
-set number
+set number relativenumber
 set cursorline
 syntax enable
 
@@ -87,8 +87,6 @@ map <End>  :tnext<CR>
 " TODO Do also cnext and cprev as a fallback
 map <PageDown> :lnext<CR>
 map <PageUp>   :lprev<CR>
-
-let g:EclimCompletionMethod = 'omnifunc'
 
 " Make Y consistent with D and C
 function! YRRunAfterMaps()
@@ -142,7 +140,7 @@ let g:UltiSnipsListSnippets = '<c-h>'
 
 nnoremap <silent> <Leader>gd :Gdiff<CR>
 nnoremap <silent> <Leader>gb :Gblame<CR>
-nnoremap <Leader>gg :Ggrep
+nnoremap <Leader>gg :Ggrep <cword> *<CR>
 
 nnoremap <Leader>a :Ack
 
@@ -220,7 +218,3 @@ augroup END
 " quiting and saving
 nmap <Leader>w :w<CR>
 nmap <Leader>q :q!<CR>
-
-" eclim
-nmap <Leader>s :JavaSearch 
-nmap <Leader>ji : JavaImport<CR>
